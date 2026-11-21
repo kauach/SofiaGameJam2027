@@ -4,18 +4,14 @@ using TMPro;
 public class PlayerLogic : MonoBehaviour
 {
     private Canvas personalCanvas;
-    private Canvas hudCanvas;
-    private ProgressBarLogic passionProgressBar;
     private TMP_Text playerText;
     private float uiCountdown = 3.0f;
 
-    private float Passion = 1.0;
+    public float Passion { get; set; } = 1.0f;
 
     void Awake()
     {
-        GameObject hudObject = GameObject.Find("HUD");
-        hudCanvas = hudObject.GetComponent<Canvas>();
-        passionProgressBar = hudObject.transform.Find("PassionProgressBar").GetComponent<ProgressBarLogic>();
+        
 
         Transform tr = transform.Find("UI");
         if (tr != null)
@@ -48,7 +44,5 @@ public class PlayerLogic : MonoBehaviour
         playerText.text = text;
         personalCanvas.enabled = true;
         uiCountdown = 3.0f;
-
-        passionProgressBar.SetProgress(0.5f);
     }
 }
