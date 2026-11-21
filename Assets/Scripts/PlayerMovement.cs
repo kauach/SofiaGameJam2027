@@ -5,12 +5,18 @@ public class PlayerMovement : MonoBehaviour
     public float Speed = 5;
     private Rigidbody2D rigidbody;
     private Animator animator;
+    private Transform Visuals;
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        Visuals = transform.Find("Visuals");
+        if (Visuals != null)
+        {
+            animator = Visuals.gameObject.GetComponent<Animator>();
+        }
+            
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------
@@ -24,10 +30,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", Mathf.Abs(horizontal));
         animator.SetFloat("Vertical", Mathf.Abs(vertical));
 
-        if (horizontal > 0 && transform.localScale.x < 0 
-            || horizontal < 0 && transform.localScale.x > 0)
+        if (horizontal > 0 && Visuals.localScale.x < 0 
+            || horizontal < 0 && Visuals.localScale.x > 0)
         {
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+
+            Visuals.localScale = new Vector3(Visuals.localScale.x * -1, Visuals.localScale.y, Visuals.localScale.z);
         }
     }
 }

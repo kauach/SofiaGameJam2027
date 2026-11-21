@@ -23,7 +23,7 @@ public class PlayerInteraction : MonoBehaviour
             InteractionBase interaction = GetInteractionFromTrigger(trigger);
             if (Input.GetButtonDown(interaction.button))
             {
-                UnityEngine.Debug.Log("pressed!");
+                interaction.OnInteraction(gameObject);
             }
         }
     }

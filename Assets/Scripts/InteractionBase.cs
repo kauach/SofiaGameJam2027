@@ -14,10 +14,8 @@ public abstract class InteractionBase : MonoBehaviour
             uiCanvas = tr.gameObject.GetComponent<Canvas>();
 
             Transform tr2 = uiCanvas.transform.Find("Text");
-            UnityEngine.Debug.LogWarning("dupsko");
             if (tr2 != null)
             {
-                UnityEngine.Debug.LogWarning("w cipke");
                 TMP_Text text = tr2.gameObject.GetComponent<TMP_Text>();
                 text.text = button;
             }
@@ -36,4 +34,6 @@ public abstract class InteractionBase : MonoBehaviour
     {
         uiCanvas.enabled = false;
     }
+
+    public abstract void OnInteraction(GameObject player);
 }
