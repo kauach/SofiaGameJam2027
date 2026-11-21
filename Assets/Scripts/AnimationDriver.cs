@@ -32,5 +32,29 @@ public class AnimationDriver : MonoBehaviour
 
             Visuals.localScale = new Vector3(Visuals.localScale.x * -1, Visuals.localScale.y, Visuals.localScale.z);
         }
+
+        if (Mathf.Abs(horizontal) + Mathf.Abs(vertical) < 0.1f)
+        {
+            animator.SetInteger("Direction", 0);
+        }
+        else
+        {
+            if (vertical > 0)
+            {
+                animator.SetInteger("Direction", 2);
+            }
+            else if (vertical < 0)
+            {
+                animator.SetInteger("Direction", 0);
+            }
+            else if (horizontal > 0)
+            {
+                animator.SetInteger("Direction", 1);
+            }
+            else if (horizontal < 0)
+            {
+                animator.SetInteger("Direction", 3);
+            }
+        }
     }
 }
