@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class ProgressBarLogic : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private RectTransform progress;
+    private float originalWidth;
+
+    void Awake()
     {
-        
+        Transform tr = transform.Find("Progress");
+        if (tr != null)
+        {
+            progress = tr.gameObject.GetComponent<RectTransform>();
+            originalWidth = (progress.sizeDelta.x);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetProgress(float value)
     {
-        
+        progress.sizeDelta = new Vector2(value * originalWidth, progress.sizeDelta.y);
     }
 }
