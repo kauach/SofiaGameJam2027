@@ -3,42 +3,50 @@ using TMPro;
 
 public class PlayerLogic : MonoBehaviour
 {
-    private Canvas uiCanvas;
-    private TMP_Text Text;
+    private Canvas personalCanvas;
+    private Canvas hudCanvas;
+    private ProgressBarLogic passionProgressBar;
+    private TMP_Text playerText;
     private float uiCountdown = 3.0f;
 
     void Awake()
     {
+        GameObject hudObject = GameObject.Find("HUD");
+        hudCanvas = hudObject.GetComponent<Canvas>();
+        passionProgressBar = hudObject.transform.Find("PassionProgressBar").GetComponent<ProgressBarLogic>();
+
         Transform tr = transform.Find("UI");
         if (tr != null)
         {
-            uiCanvas = tr.gameObject.GetComponent<Canvas>();
+            personalCanvas = tr.gameObject.GetComponent<Canvas>();
 
-            Transform tr2 = uiCanvas.transform.Find("Text");
+            Transform tr2 = personalCanvas.transform.Find("Text");
             if (tr2 != null)
             {
-                Text = tr2.gameObject.GetComponent<TMP_Text>();
-                Text.text = gameObject.name;
+                playerText = tr2.gameObject.GetComponent<TMP_Text>();
+                playerText.text = gameObject.name;
             }
 
-            uiCanvas.enabled = false;
+            personalCanvas.enabled = false;
         }
     }
 
     public void Update()
     {
-        if (uiCanvas.enabled)
+        if (personalCanvas.enabled)
         {
             uiCountdown -= Time.deltaTime;
             if (uiCountdown < 0.0f)
-                uiCanvas.enabled = false;
+                personalCanvas.enabled = false;
         }
     }
 
     public void TestInteraction(string text)
     {
-        Text.text = text;
-        uiCanvas.enabled = true;
+        playerText.text = text;
+        personalCanvas.enabled = true;
         uiCountdown = 3.0f;
+
+        passionProgressBar.SetProgress(0.5f);
     }
 }
