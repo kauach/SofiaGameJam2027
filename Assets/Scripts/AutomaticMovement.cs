@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,7 +39,6 @@ public class AutomaticMovement : MonoBehaviour
         if (dist.magnitude < 0.2f)
         {
             rigidbody.linearVelocity = Vector2.zero;
-
             if (timer < POIList[currentPOI].time)
                 timer += Time.deltaTime;
             else
@@ -53,4 +53,5 @@ public class AutomaticMovement : MonoBehaviour
             rigidbody.linearVelocity = dist * Speed;
         }
     }
+
 }
