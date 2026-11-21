@@ -564,8 +564,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.179266}
-  m_Size: {x: 0.31866977, y: 0.40498585}
+  m_Offset: {x: -0.0045360327, y: -0.37885046}
+  m_Size: {x: 0.72691035, y: 1.2577558}
   m_Direction: 0
 --- !u!114 &456827365
 MonoBehaviour:
@@ -1550,8 +1550,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.032116964, y: -0.21740493}
-  m_Size: {x: 0.35881594, y: 0.786375}
+  m_Offset: {x: -0.078781605, y: -0.36739838}
+  m_Size: {x: 0.678802, y: 1.1663585}
   m_Direction: 0
 --- !u!114 &858503439
 MonoBehaviour:
@@ -1718,6 +1718,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 248913436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1094410918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1094410919}
+  m_Layer: 0
+  m_Name: GameplaController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1094410919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094410918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1115912747
 GameObject:
@@ -2359,7 +2390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.75}
+  m_AnchoredPosition: {x: 0, y: 1.5}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374453563
@@ -4542,16 +4573,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 0, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 1, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -5865,7 +5886,7 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - serializedVersion: 2
-    m_RefCount: 252
+    m_RefCount: 251
     m_Data: {fileID: 11400000, guid: c4ca7d6b78de0604abd8620f819e6481, type: 2}
   - serializedVersion: 2
     m_RefCount: 6
@@ -5875,7 +5896,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 03002d888334d2c4aaa73859c0dd5b02, type: 2}
   m_TileSpriteArray:
   - serializedVersion: 2
-    m_RefCount: 252
+    m_RefCount: 251
     m_Data: {fileID: -2093983773, guid: da550a11ee37e3b47b1263b3f4a99665, type: 3}
   - serializedVersion: 2
     m_RefCount: 6
@@ -5885,7 +5906,7 @@ Tilemap:
     m_Data: {fileID: 7137971174399236872, guid: 34b047c0a417ffe47888953de83a221e, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 264
+    m_RefCount: 263
     m_Data:
       e00: 1
       e01: 0
@@ -5905,7 +5926,7 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - serializedVersion: 2
-    m_RefCount: 264
+    m_RefCount: 263
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -6023,6 +6044,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1094410919}
   - {fileID: 619394802}
   - {fileID: 858503440}
   - {fileID: 854984710}

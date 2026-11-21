@@ -9,6 +9,8 @@ public class PlayerLogic : MonoBehaviour
     private TMP_Text playerText;
     private float uiCountdown = 3.0f;
 
+    private float Passion = 1.0;
+
     void Awake()
     {
         GameObject hudObject = GameObject.Find("HUD");
