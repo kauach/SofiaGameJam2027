@@ -18,6 +18,10 @@ public class GameplayController : MonoBehaviour
     public Canvas VictoryPanel;
     public Canvas PassionGameOverPanel;
 
+    public AudioSource gameMusic;
+    public AudioSource gameOverMusic;
+    public AudioSource obsessedMusic;
+
     void Awake()
     {
         Transform passionPannel = hudCanvas.transform.Find("PassionPanel");
@@ -47,11 +51,23 @@ public class GameplayController : MonoBehaviour
             return;
 
         if (girlLogic.Anger >= 1.0f)
+        {
+            gameMusic.mute = true;
+            gameOverMusic.mute = false;
             AngerGameOverPanel.enabled = true;
+        }
         else if (playerLogic.Passion >= 1.0f)
+        {
+            gameMusic.mute = true;
+            obsessedMusic.mute = false;
             VictoryPanel.enabled = true;
+        }
         else if (playerLogic.Passion <= 0.0f)
+        {
+            gameMusic.mute = true;
+            obsessedMusic.mute = false;
             PassionGameOverPanel.enabled = true;
+        }
     }
 
     void UIUpdate()
