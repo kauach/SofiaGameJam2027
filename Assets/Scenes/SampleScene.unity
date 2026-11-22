@@ -612,7 +612,7 @@ Transform:
   m_GameObject: {fileID: 456827360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.89, y: -0.78, z: 0}
+  m_LocalPosition: {x: -15.83, y: 0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -732,7 +732,7 @@ MonoBehaviour:
   highlightTile: {fileID: 11400000, guid: 4724de64f20df6444ab490ae7561aec3, type: 2}
   tilemap: {fileID: 717885126}
   radius: 10
-  angle: 120
+  angle: 90
   lookDirection: {x: 0, y: -1}
 --- !u!33 &456827367
 MeshFilter:
@@ -963,7 +963,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -988,7 +988,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11128,13 +11128,13 @@ Transform:
   m_GameObject: {fileID: 858503436}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10.48, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 519420032}
   - {fileID: 492115676}
   - {fileID: 1374453562}
-  - {fileID: 519420032}
   - {fileID: 836626130}
   - {fileID: 222863820}
   m_Father: {fileID: 0}
@@ -11164,8 +11164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff7bfef0d9827644b32c2fedb947a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLogic
-  attractionRadius: 6
-  sweetspot: 2
+  attractionRadius: 10
+  sweetSpotRadius: 5
 --- !u!114 &858503443
 MonoBehaviour:
   m_ObjectHideFlags: 0
