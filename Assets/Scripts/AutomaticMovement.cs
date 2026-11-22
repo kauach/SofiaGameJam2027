@@ -16,7 +16,7 @@ public class AutomaticMovement : MonoBehaviour
 
     public POITimer[] POIList;
     private int currentPOI = -1;
-    private float timer = 0;
+    private float timer = 100;
 
     void Awake()
     {
@@ -52,6 +52,9 @@ public class AutomaticMovement : MonoBehaviour
             dist.Normalize();
             rigidbody.linearVelocity = dist * Speed;
         }
+
+        dist.Normalize();
+        GetComponent<FieldOfView>().lookDirection = dist;
     }
 
 }

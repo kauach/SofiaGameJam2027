@@ -6,13 +6,14 @@ public class PlayerLogic : MonoBehaviour
     private Canvas personalCanvas;
     private TMP_Text playerText;
     private float uiCountdown = 3.0f;
+    
+    public float attractionRadius = 6.0f;
+    public float sweetSpotRadius = 2.0f;
 
     public float Passion { get; set; } = 1.0f;
 
     void Awake()
     {
-        
-
         Transform tr = transform.Find("UI");
         if (tr != null)
         {
@@ -27,6 +28,12 @@ public class PlayerLogic : MonoBehaviour
 
             personalCanvas.enabled = false;
         }
+
+        tr = transform.Find("AttractionRadius");
+        tr.scale.y = tr.scale.x = attractionRadius;
+
+        tr = transform.Find("SweetSpotRadius");
+        tr.scale.y = tr.scale.x = sweetSpotRadius;
     }
 
     public void Update()
