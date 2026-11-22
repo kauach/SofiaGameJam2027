@@ -1,16 +1,21 @@
-using UnityEngine;
+using System;
+using System.Collections.Specialized;
 using TMPro;
+using UnityEngine;
 
 public class PlayerLogic : MonoBehaviour
 {
     private Canvas personalCanvas;
     private TMP_Text playerText;
     private float uiCountdown = 3.0f;
-    
+
+    public float attractionPassionGain = 0.15f;
+    public float sweetSpotPassionGain = 0.30f;
+
     public float attractionRadius = 6.0f;
     public float sweetSpotRadius = 2.0f;
 
-    public float Passion { get; set; } = 1.0f;
+    public float Passion { get; set; } = 0.5f;
 
     void Awake()
     {
@@ -30,10 +35,10 @@ public class PlayerLogic : MonoBehaviour
         }
 
         tr = transform.Find("AttractionRadius");
-        tr.localScale = new Vector3(attractionRadius, attractionRadius, tr.localScale.z);
+        tr.localScale = new Vector3(attractionRadius * 2, attractionRadius * 2, tr.localScale.z);
 
         tr = transform.Find("SweetSpotRadius");
-        tr.localScale = new Vector3(sweetSpotRadius, sweetSpotRadius, tr.localScale.z);
+        tr.localScale = new Vector3(sweetSpotRadius * 2, sweetSpotRadius * 2, tr.localScale.z);
     }
 
     public void Update()
@@ -51,5 +56,17 @@ public class PlayerLogic : MonoBehaviour
         playerText.text = text;
         personalCanvas.enabled = true;
         uiCountdown = 3.0f;
+    }
+
+    public void CheckGirlPosition(Vector3 girlPosition)
+    {
+        float distance = (transform.position - girlPosition).magnitude;
+        UnityEngine.Debug.Log($"{distance}");
+        if (distance < sweetSpotRadius)
+            Passion += sweetSpotPassionGain * Time.deltaTime;
+        else if (distance <= attractionRadius)
+            Passion += attractionPassionGain * Time.deltaTime;
+
+        Passion = Math.Min(1.0f, Math.Max(0.0f, Passion));
     }
 }

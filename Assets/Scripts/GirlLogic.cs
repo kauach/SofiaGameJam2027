@@ -1,22 +1,37 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class FieldOfView : MonoBehaviour
+public class GirlLogic : MonoBehaviour
 {
     public TileBase highlightTile;
     public Tilemap tilemap;
     public int radius;
     public int angle;
+    public float angerGain = 0.3f;
+    public float angerDecay = 0.05f;
     private int segments = 30;
     public Vector2 lookDirection = Vector2.down;
 
     private Vector3Int[] highlightedTiles;
     private Vector3Int tilemapPosition;
 
+    public float Anger { get; set; } = 0.0f;
+
+    private Canvas personalCanvas;
+    private ProgressBarLogic angerProgressBar;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        GenerateWedge();
+        Transform tr = transform.Find("UI");
+        if (tr != null)
+        {
+            personalCanvas = tr.gameObject.GetComponent<Canvas>();
+            angerProgressBar = tr.Find("AngerProgressBar").GetComponent<ProgressBarLogic>();
+            angerProgressBar.SetProgress(Anger);
+            personalCanvas.enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -36,6 +51,8 @@ public class FieldOfView : MonoBehaviour
                 tilemap.SetTile(new Vector3Int((int)checkedTile.x, (int)checkedTile.y, tilemapPosition.z), IsTargetInsideFOV(checkedTile) ? highlightTile : null);  
             }
         }
+
+        UIUpdate();
     }
 
     bool IsTargetInsideFOV(Vector2 target)
@@ -54,36 +71,28 @@ public class FieldOfView : MonoBehaviour
         return false;
     }
 
-    public void GenerateWedge()
+    public void CheckPlayerPosition(Vector3 playerPosition)
     {
-        Mesh mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
+        if (IsTargetInsideFOV(new Vector2(playerPosition.x, playerPosition.y)))
+            Anger += angerGain * Time.deltaTime;
+        else
+            Anger -= angerDecay * Time.deltaTime;
+        
+        Anger = Math.Min(1.0f, Math.Max(0.0f, Anger));
 
-        int vertexCount = segments + 2;
-        Vector3[] vertices = new Vector3[vertexCount];
-        int[] triangles = new int[segments * 3];
+        UIUpdate();
+    }
 
-        // Center point of the circle
-        vertices[0] = Vector3.zero;
+    void UIUpdate()
+    {
+        angerProgressBar.SetProgress(Anger);
 
-        float angleStep = angle / segments;
+        personalCanvas.enabled = (Anger > 0.0f);
 
-        for (int i = 0; i <= segments; i++)
-        {
-            float rad = Mathf.Deg2Rad * (i * angleStep);
-            // Draws flat on the XZ ground plane
-            vertices[i + 1] = new Vector3(Mathf.Cos(rad) * radius, 0f, Mathf.Sin(rad) * radius);
-        }
+        float pingpong = Mathf.PingPong((Time.time) * 1.5f, 1);
+        float scale = Mathf.Lerp(1f, 1.1f, pingpong);
+        personalCanvas.transform.localScale = new Vector3(scale, scale, scale);
 
-        for (int i = 0; i < segments; i++)
-        {
-            triangles[i * 3] = 0;
-            triangles[i * 3 + 1] = i + 2;
-            triangles[i * 3 + 2] = i + 1;
-        }
-
-        mesh.vertices = vertices;
-        mesh.triangles = triangles;
-        mesh.RecalculateNormals();
+        UnityEngine.Debug.Log($"Anger {Anger}");
     }
 }

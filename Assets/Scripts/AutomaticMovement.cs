@@ -54,7 +54,7 @@ public class AutomaticMovement : MonoBehaviour
         }
 
         dist.Normalize();
-        GetComponent<FieldOfView>().lookDirection = dist;
+        GetComponent<GirlLogic>().lookDirection = dist;
     }
 
 }
