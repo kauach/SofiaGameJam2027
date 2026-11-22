@@ -30,10 +30,10 @@ public class PlayerLogic : MonoBehaviour
         }
 
         tr = transform.Find("AttractionRadius");
-        tr.scale.y = tr.scale.x = attractionRadius;
+        tr.localScale = new Vector3(attractionRadius, attractionRadius, tr.localScale.z);
 
         tr = transform.Find("SweetSpotRadius");
-        tr.scale.y = tr.scale.x = sweetSpotRadius;
+        tr.localScale = new Vector3(sweetSpotRadius, sweetSpotRadius, tr.localScale.z);
     }
 
     public void Update()
