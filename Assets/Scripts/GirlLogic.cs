@@ -93,6 +93,6 @@ public class GirlLogic : MonoBehaviour
         float scale = Mathf.Lerp(1f, 1.1f, pingpong);
         personalCanvas.transform.localScale = new Vector3(scale, scale, scale);
 
-        UnityEngine.Debug.Log($"Anger {Anger}");
+        //UnityEngine.Debug.Log($"Anger {Anger}");
     }
 }

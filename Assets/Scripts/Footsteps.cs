@@ -23,7 +23,6 @@ public class Footsteps : MonoBehaviour
             {
                 int idx = UnityEngine.Random.Range(0, footstepsSFX.Length);
                 AudioManager.instance.PlaySFX(footstepsSFX[idx]);
-                UnityEngine.Debug.Log("PLAY KURWA");
             }
 
             yield return new WaitForSeconds(0.35f);
