@@ -61,7 +61,7 @@ public class PlayerLogic : MonoBehaviour
     public void CheckGirlPosition(Vector3 girlPosition)
     {
         float distance = (transform.position - girlPosition).magnitude;
-        UnityEngine.Debug.Log($"{distance}");
+
         if (distance < sweetSpotRadius)
             Passion += sweetSpotPassionGain * Time.deltaTime;
         else if (distance <= attractionRadius)
