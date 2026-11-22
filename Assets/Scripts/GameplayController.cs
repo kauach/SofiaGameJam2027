@@ -17,6 +17,7 @@ public class GameplayController : MonoBehaviour
     public Canvas AngerGameOverPanel;
     public Canvas VictoryPanel;
     public Canvas PassionGameOverPanel;
+    public Canvas IntroPanel;
 
     public AudioSource gameMusic;
     public AudioSource gameOverMusic;
@@ -32,6 +33,21 @@ public class GameplayController : MonoBehaviour
         AngerGameOverPanel.enabled = false;
         VictoryPanel.enabled = false;
         PassionGameOverPanel.enabled = false;
+        IntroPanel.enabled = true;
+    }
+
+    void Update()
+    {
+        if(IntroPanel.enabled)
+        {
+            Time.timeScale = 0f;
+
+            if(Input.GetButtonDown("Fire1"))
+            {
+                Time.timeScale = 1f;
+                IntroPanel.enabled = false;
+            }    
+        }
     }
 
     void FixedUpdate()
